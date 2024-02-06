@@ -1,0 +1,165 @@
+.nav {
+	position: fixed; 
+	top: 0;
+	right: 0;
+	left: 0;
+	z-index: 10;
+	width: 100%;
+	background-color: #202427;
+	height: 80px;
+}
+
+Image {
+	background-color: transparent;
+}
+
+.nav_content {
+	justify-content: space-between;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.nav_sections {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 0.3rem;
+	padding-bottom: 0.3rem;
+}
+
+.logo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+h2 {
+	font-size: 1.5rem;
+	line-height: 2rem; 
+	color: rgb(8 145 178);
+	font-weight: 700;
+}
+
+button {
+	padding: 0.5rem; 
+	color: #4a5568;
+	border: none;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+button:focus {
+	color: #374151;
+}
+
+.burger_btn_img:focus {
+	border: none;
+}
+
+.burger_btn_img:active {
+	border: none;
+}
+
+.tabs {
+	flex: 1;
+	justify-self: center;
+	padding-bottom: 3px;
+	margin-top: 8px;
+}
+
+.tabs_open {
+	padding: 3rem;
+	display: block;
+}
+
+.hidden_mini {
+	display: none;
+}
+
+ul {
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+	list-style-type: none;
+}
+
+li {
+	padding-bottom: 1.5rem;
+	font-size: 1.25rem;
+	color: white;
+	padding-top: 0.5rem;
+	padding-bottom: 0.5rem;
+	text-align: center;
+	border-bottom: 2px solid #6B46C1;	
+}
+
+li:hover {
+	background-color: #6B46C1;
+	border-color: #6B46C1;
+	color: #9F7AEA;
+}
+
+.username {
+	display: none;
+	cursor: pointer;
+}
+
+@media (min-width: 768px) {
+	.nav_content {
+		padding-left: 2rem;
+		padding-right: 2rem;
+		display: flex;
+		align-items: center;
+	}
+
+	.nav_sections {
+		padding-top: 1rem;
+		padding-bottom: 1rem;
+	}
+
+	.burger {
+		display: none;
+	}
+
+	.tabs {
+		display: block;
+		padding-bottom: 0;
+		margin-top: 0;
+	}
+
+	.tabs_open {
+		padding: 0;
+	}
+
+	.hidden_mini {
+		display: block;
+	}
+
+	ul {
+		height: auto;
+		display: flex;
+	}
+
+	li {
+		padding-left: 1.5rem;
+		padding-right: 1.5rem;
+		border-bottom: none;
+	}
+	
+	li:hover {
+		color: #9F7AEA;
+		background-color: transparent;
+	}
+
+	.username {
+		display: contents;
+	}
+}
+
+@media (min-width: 1024px) {
+	.nav_content {
+		max-width: 200rem;
+	}
+}

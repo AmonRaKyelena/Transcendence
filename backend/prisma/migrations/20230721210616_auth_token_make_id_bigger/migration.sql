@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "AuthToken" ALTER COLUMN "userID" SET DATA TYPE VARCHAR(50);

@@ -1,8 +1,13 @@
-FROM node:16.15.0
+FROM node:16.20.2
 
 WORKDIR /app/FRONT
 
 EXPOSE 3000
 
-COPY ./deployment/front/install_dependencies.sh /
-CMD ["sh", "/install_dependencies.sh"]
+COPY ./frontend .
+
+RUN yarn install
+
+RUN yarn build
+
+CMD ["yarn", "dev"]

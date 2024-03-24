@@ -1,20 +1,19 @@
-import { Controller, Post, Get, HttpCode, HttpStatus, UnauthorizedException, Headers, Res, Req } from '@nestjs/common';
+import { Controller, Post, Get, HttpCode, HttpStatus, UnauthorizedException, Headers, Res, Req, Body } from '@nestjs/common';
 import { AuthService } from '../services/auth.service';
 import { SetMetadata } from '@nestjs/common';
 import { OAuthGuard } from '../guards/auth.guard';
 import { UseGuards } from '@nestjs/common';
 import { Request, Response } from 'express';
-import { RefreshAuthGuard } from '../guards/refresh-jwt.guard';
-import { JwtService } from '@nestjs/jwt';
 import { JWTAuthGuard } from '../guards/auth-jwt.guard';
+import { PassGuard } from '../guards/pass.guard';
+import { SignUpDto } from '../dto/sign_up.dto';
 
 export const IS_PUBLIC_KEY = 'isPublic';
 export const Public = () => SetMetadata(IS_PUBLIC_KEY, true);
 
 @Controller('auth')
 export class AuthController {
-	constructor(private authService: AuthService,
-				private jwtService: JwtService) {}
+	constructor(private authService: AuthService) {}
 
 	@Get('loginIntraCode')
 	@UseGuards(OAuthGuard)
@@ -30,45 +29,60 @@ export class AuthController {
 			if (!code)
 				throw new UnauthorizedException();
 
-			let token: string;
-			let refresh_token: string;
-			if (req.cookies['jwt-token']) {
-				token = req.cookies['jwt-token'];
-			} else {
-				const tokens = await this.authService.loginIntra(code);
-				token = tokens.token;
-				refresh_token = tokens.refresh_token;
-				res.cookie('jwt-token', token, { httpOnly: true, secure: true });
-				res.cookie('refresh-token', refresh_token, { httpOnly: true, secure: true });
-			}
+			let data;
+			data = await this.authService.loginIntra(code, res);
 
-			return res.json({ token });
-		}
-		catch (error) {
-			console.log('loginIntra endpoint: ' + error.message);
+			return res.status(200).json({ need2FA: data.need2FA, userID: data.userID });
+		} catch (error) {
 			return res.status(500).json({ message: 'Internal server error ' + error.message });
 		}
 	}
 
-	@UseGuards(RefreshAuthGuard)
+	@UseGuards(PassGuard)
+	@HttpCode(HttpStatus.OK)
+	@Post('loginPass')
+	async loginPass (@Req() req: Request,
+					 @Res() res: Response) {
+		try {
+			if (!req['user'])
+				throw new UnauthorizedException();
+			
+			let data;
+			data = await this.authService.loginPass(req['user'], res);
+
+			return res.json({ need2FA: data.need2FA, userID: data.userID });
+		} catch (error) {
+			return res.status(500).json({ message: 'Internal server error ' + error.message });
+		}
+	}
+
+	@Post('signUpPass')
+	@HttpCode(HttpStatus.OK)
+	async signUpPass(@Body() signUpDto: SignUpDto, @Res() res: Response) {
+		try {
+			await this.authService.createUser(signUpDto);
+			return res.json({ res: 'user has been created' });
+		} catch (error) {
+			return res.status(500).json({ message: error.message });
+		}
+	}
+
 	@HttpCode(HttpStatus.OK)
 	@Get('refreshJwt')
 	async refreshJwt(@Res() res: Response,
-			   @Req() req: Request) {
-		if (!req['user']) {
-			console.log('no user');
-			return res.json({error: 'No refresh token'});
+			  		 @Req() req: Request) {
+		if (!req.cookies['refresh-token']) {
+			res.clearCookie('jwt-token');
+			return res.json({res: 'Error'});
 		}
-
+		
 		try {
-			const new_token = await this.authService.refreshJwt(req['user']);
-			res.cookie('jwt-token', new_token, { httpOnly: true, secure: true });
+			const new_token = await this.authService.refreshJwt(req.cookies['refresh-token'], res);
+			res.cookie('jwt-token', new_token);
 
-			return res.json({ token: new_token });
+			return res.status(200).json({res: 'Success'});
 		} catch (error) {
-			console.log('refreshJwt endpoint: ' + error.message);
-
-			return res.status(500).json({ message: 'Internal server error ' + error.message });
+			return res.status(200).json({res: 'Error'});
 		}
 	}
 
@@ -81,19 +95,35 @@ export class AuthController {
 		return res.json({ logout: 'logout' });
 	}
 
-	@UseGuards(JWTAuthGuard)
 	@Get('checkJWT')
-	checkJWT() {
-		return 'JWT token is avaible';
+	async checkJWT(@Req() req: Request) {
+		try {
+			if (!req.cookies['jwt-token'])
+				throw new Error();
+			await this.authService.checkJWT(req.cookies['jwt-token']);
+			return {res: 'Success'};
+		} catch(error) {
+			return {res: 'Error'};
+		}
 	}
 
-	@Get('allUsers')
-	allUsersTest() {
-		return this.authService.allClients();
+	@Post('validate2FA')
+	async validate2FA(@Body() body, @Res() res: Response, @Req() req: Request) {
+		try {
+			await this.authService.validate2FACode(body['code'], body['userID'], res);
+			if (!req.cookies['jwt-token']) {
+				await this.authService.createJwtAndSetCookie(body['userID'], res);
+			}
+			return res.status(200).json('Authorized');
+		} catch (error) {
+			return res.status(200).json('Not authorized');
+		}
 	}
 
-	@Get('allTokens')
-	allTokensTest() {
-		return this.authService.allTokens();
+	@UseGuards(JWTAuthGuard)
+	@Get('qrCodeGoogle')
+	async qrCodeGoogle(@Req() req: Request) {
+		return { code: await this.authService.qrCodeGoogle(req['user']) };
 	}
+
 }

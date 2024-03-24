@@ -1,0 +1,279 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	/* font-family: 'Poppins', sans-serif; */
+}
+
+.profilePage {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 30px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+	/* font-family: 'Poppins', sans-serif; */
+	font-family: "Roboto";
+	user-select: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.profilePage .img-area{
+	height: 150px;
+	width: 150px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	user-select: none;
+}
+
+.profile_info {
+	height: 100px;
+	width: 170px;
+	display: inline-block;
+	padding: 10px;
+}
+
+.img-area {
+	display: inline-block;
+}
+
+.img-area .inner-area{
+	height: calc(100% - 25px);
+	width: calc(100% - 25px);
+	border-radius: 50%;
+}
+
+.img-area .inner-area img{
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	object-fit: cover;
+	box-shadow: 0px 8px 16px 10px rgba(0, 0, 0, 0.2);
+}
+
+.profilePage .user {
+	font-size: 23px;
+	font-weight: 500;
+	color: #ffffff;
+	margin: 10px 0 5px 0;
+  }
+
+.profilePage .fullName {
+	color: #f8f8f8;
+	font-weight: 400;
+	font-size: 14px;
+}
+
+.profilePage .icon{
+	font-size: 17px;
+	color: #31344b;
+	position: absolute;
+	cursor: pointer;
+	opacity: 0.7;
+	top: 15px;
+	height: 35px;
+	width: 35px;
+	text-align: center;
+	line-height: 35px;
+	border-radius: 50%;
+	font-size: 16px;
+}
+
+.profilePage .icon .i{
+	width: 90%;
+	height: 90%;
+	position: relative;
+	z-index: 9;
+	color: aliceblue;
+}
+
+.profilePage .icon.dots{
+	right: 15px;
+}
+
+.profilePage .status {
+	color: rgb(145, 238, 122);
+	font-size: 12px;
+}
+
+/* Styles for the dropdown menu */
+.dropdown-menu {
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #3F3F3F;
+	box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+	z-index: 1;
+	border-radius: 10px;
+}
+
+/* Styles for individual dropdown items */
+.dropdown-item {
+	display: grid;
+	align-items: flex-end;
+	padding: 9px;
+	cursor: pointer;
+}
+
+.dropdown-item:hover {
+	border-radius: 10px;
+	background-color: rgb(76, 77, 91);
+}
+
+.dropdown input{
+	width: 100%;
+	height: 100%;
+}
+
+.dropdown-item span {
+	font-size: 16px;
+}
+
+.nickname-change-body {
+	display: flex;
+	flex-direction: row;
+	margin-bottom: 5px;
+}
+
+.nickname-change input {
+	font-family: "Roboto", sans-serif;
+	outline: 0;
+	background: #f2f2f2;
+	width: 100%;
+	border: 0;
+	padding: 7px;
+	margin-right: 10px;
+	box-sizing: border-box;
+	font-size: 14px;
+	border-radius: 10px;
+}
+
+.nickname-change button {
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: #2E2E2E;
+	border: 0;
+	padding: 7px;
+	color: #FFFFFF;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+	border-radius: 10px;
+}
+
+.nickname-change .invalid-feedback {
+	font-family: "Roboto", sans-serif;
+	font-size: 12px;
+	color: rgb(239, 49, 49);
+}
+
+.enable-google {
+	height: 100%;
+	width: 100%;
+	position: relative;
+	padding: 30px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.enable-google img {
+	margin: 10px 0;
+	width: 200px;
+	height: 200px;
+}
+
+.enable-google h3 {
+	text-align: center;
+	width: 200px;
+}
+
+/* ======================= Games history ======================= */
+.games_history {
+	font-family: 'Poppins', sans-serif;
+	position: relative;
+	width: 100%;
+	height: 100%;
+	padding: 20px;
+	border-radius: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	flex-direction: column;
+	user-select: none;
+}
+
+.games_history ul {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	user-select: none;
+}
+
+.games_history li {
+	width: 100%;
+	height: 50px;
+	background-color: #1E1E1E;
+	margin-top: 10px;
+	padding: 5px;
+	padding-right: 15px;
+	padding-left: 15px;
+
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	user-select: none;
+}
+
+.games_history .username {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	font-size: 14px;
+	color: #ffffff;
+	user-select: none;
+}
+
+.games_history .status {
+	user-select: none;
+}
+
+.games_history .date {
+	font-size: 10px;
+	color: #ffffff;
+	user-select: none;
+}
+
+.games_history .result {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	color: #ffffff;
+	user-select: none;
+}
+
+.games_history .result_count {
+	color: #ffffff;
+	user-select: none;
+	justify-content: center;
+	font-size: 18px;
+
+}
+
+.games_history .result .win_or_loose {
+	color: rgb(145, 238, 122);
+	user-select: none;
+}

@@ -1,0 +1,37 @@
+.google-auth {
+	display: flex;
+	flex-direction: column;
+}
+
+.google-auth input {
+	font-family: "Roboto", sans-serif;
+	outline: 0;
+	background: #f2f2f2;
+	width: 100%;
+	border: 0;
+	padding: 7px;
+	box-sizing: border-box;
+	font-size: 14px;
+	border-radius: 10px;
+}
+
+.google-auth button {
+	font-family: "Roboto", sans-serif;
+	text-transform: uppercase;
+	outline: 0;
+	background: #778e9e;
+	border: 0;
+	padding: 7px;
+	color: #FFFFFF;
+	font-size: 14px;
+	-webkit-transition: all 0.3 ease;
+	transition: all 0.3 ease;
+	cursor: pointer;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+
+.google-auth button:hover {
+	background: #4f5f6b;
+}
+

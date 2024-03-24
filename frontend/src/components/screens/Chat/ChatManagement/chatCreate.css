@@ -1,0 +1,94 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+.create-chat {
+	margin-top: 10px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+
+
+	.chat-name-panel {
+		margin-top: 20px;
+		width: 70%;
+		height: 30px;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	#chat-input {
+		width: 100%;
+		height: 30px;
+
+		border:none;
+		background-image:none;
+		background-color: #2E2E2E;
+		color: white;
+		padding: 0rem 1rem;
+		border-radius: 1.125rem;
+	}
+
+	.privacy-options {
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		width: 70%;
+	}
+
+	.privacy-option {
+		width: 45%;
+		height: 30px;
+
+		background-color: #1E1E1E;
+		border-radius: 15px;
+		cursor: pointer;
+
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		margin-top: 10px;
+		user-select: none; 
+	}
+
+	.checked {
+		border: double 4px transparent;
+		border-radius: 80px;
+		background-image: linear-gradient(#1E1E1E, #1E1E1E), radial-gradient(circle at top left, rgb(119, 244, 202),#0bb13d);
+		background-origin: border-box;
+		background-clip: padding-box, border-box;
+	}
+
+	.password-and-create {
+		width: 70%;
+
+		margin-top: 15px;
+
+		display: flex;
+		flex-direction: row;
+		justify-content: flex-end;
+	}
+
+	.create_chat_finish_btn {
+		color: white;
+		margin-right: 5px;
+
+		background-color: gray;
+		border-radius: 10px;
+	}
+
+	
+	.invalid-feedback {
+		margin-top: 10px;
+		font-family: "Roboto", sans-serif;
+		font-size: 15px;
+		color: rgb(239, 49, 49);
+	}
+}
+

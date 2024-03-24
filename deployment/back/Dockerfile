@@ -1,23 +1,17 @@
-FROM node:16.15.0
+FROM node:16.20.2
 
-# Create app directory
 WORKDIR /app/BACK
 
-# COPY ./backend .
-# COPY ./deployment/back/.env .env
+COPY ./backend .
 
-# Install app dependencies
-# RUN npm install
+RUN npm install
 
-# RUN npm run build
+RUN npx prisma generate
+RUN npm run build
 
 # RUN npm uninstall bcrypt
 # RUN npm i bcrypt
-# RUN npm uninstall prisma
-# RUN npm i prisma
-# RUN npx prisma generate
+COPY ./deployment/back/init.sh .
 
 EXPOSE 9000
-# CMD ["npm", "run", "start:dev"]
-COPY ./deployment/back/install_dependencies.sh /
-CMD ["sh", "/install_dependencies.sh"]
+CMD ["sh", "init.sh"]

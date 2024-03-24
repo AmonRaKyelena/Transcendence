@@ -6,4 +6,5 @@ export class UserDto {
 	last_name: string;
 	fortytwo_id: string;
 	status: UserStatus;
+	profilePic: string | null;
 }

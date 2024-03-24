@@ -1,0 +1,21 @@
+.authPage {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.google-auth {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.password_container {
+	height: 87%;
+}
+
+.intra_btn_container {
+	height: 13%;
+}

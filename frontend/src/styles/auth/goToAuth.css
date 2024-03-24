@@ -1,0 +1,22 @@
+.goToAuth {
+	width: 100%;
+	height: 100%;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-family: "Roboto";
+}
+
+.goToAuth button {
+	margin-top: 30px;
+	padding: 15px;
+	font-size: 1.5rem;
+	border-radius: 10px; 
+	cursor: pointer;
+	background-color: #202427;
+	color: white;
+
+	background-image: url("../../../public/intra_back.jpg");;
+}

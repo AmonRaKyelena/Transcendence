@@ -9,7 +9,7 @@ import { HttpModule, HttpService } from '@nestjs/axios';
 import { PassportModule } from '@nestjs/passport';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { CheckOnlineService } from './services/cron.service';
-import { JWTAuthGuard } from './guards/auth-jwt.guard';
+import { PasswordStrategy } from './strategies/password.strategy';
 
 @Module({
   imports: [
@@ -27,8 +27,9 @@ import { JWTAuthGuard } from './guards/auth-jwt.guard';
 	FortyTwoStrategy,
 	JwtStrategy,
 	CheckOnlineService,
+	PasswordStrategy
   ],
   controllers: [AuthController],
-  exports: [AuthService, JwtStrategy],
+  exports: [JwtStrategy],
 })
 export class AuthModule {}

@@ -1,0 +1,51 @@
+.friends {
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	background-color: #1f1f1f;
+    flex-grow: 1;
+	min-height: 900px;
+	min-width: 900px;
+	height: 100%;
+}
+
+.back {
+    width: 900px;
+    height: 550px;
+    border-radius: 10px;
+    background: #3F3F3F;
+
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.friends_separation_line {
+    width: 3px;
+    height: 550px;
+	background: #A9ACB2;
+
+	flex-shrink: 0;
+	margin: 0;
+}
+
+.friends-list {
+	height: 550px;
+	width: 450px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	padding: 20px;
+}
+
+.friend {
+	height: 550px;
+	width: 450px;
+	
+	align-content: center;
+}

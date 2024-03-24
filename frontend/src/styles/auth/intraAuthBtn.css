@@ -1,0 +1,27 @@
+.intra_btn {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.login {
+	padding: 10px;
+	background-color: #202427;
+	font-size: 2rem;
+	border: none;
+	border-radius: 0.5rem; 
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	cursor: pointer;
+}
+
+.login:focus {
+	color: rgb(130, 137, 144);
+}
+
+.login span {
+	font-size: 1.2rem;
+	line-height: 2rem; 
+	margin-right: 1rem;
+}

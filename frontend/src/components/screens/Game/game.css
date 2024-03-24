@@ -1,0 +1,202 @@
+.game {
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	background-color: #1f1f1f;
+    flex-grow: 1;
+	min-height: 900px;
+	min-width: 900px;
+	height: 100%;
+}
+
+.player_btns {
+	height: auto;
+	width: 900px;
+
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-bottom: 5px;
+}
+
+.back {
+    width: 900px;
+    height: 550px;
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.another-back {
+    width: 900px;
+    height: 550px;
+    border-radius: 10px;
+    background-color: #91435d;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+
+.game_separation_line {
+    width: 3px;
+    height: 550px;
+	background: #A9ACB2;
+
+	flex-shrink: 0;
+
+	/* margin-left: 448px; */
+    position: absolute;
+    left: 50%;
+}
+
+.player {
+    width: 8px;
+    height: 90px;
+    flex-shrink: 0; 
+    border-radius: 10px;
+    background: #FFF;
+    left: 0;
+	transition: top 100ms linear;
+    
+	position: absolute;
+    transform: translateY(-40%);
+}
+
+.enemy_player {
+    left: auto;
+	right: 0;
+}
+
+.ball {
+	width: 20px;
+	height: 20px;
+	background-color: #FFF;
+	border-radius: 20px;
+
+	transition: top left 100ms linear;
+
+	position: absolute;
+	top: 48%;
+	left: 49%;
+}
+
+@font-face {
+	font-family: "Roboto_Condensed";
+	src:
+	  local("Roboto"),
+      url("../../../fonts/Roboto_Condensed/RobotoCondensed-Regular.ttf");
+}
+
+.counter {
+    color: rgba(255, 255, 255, 0.20);
+    font-family: "Roboto_Condensed";
+    font-size: 180px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+
+    padding-left: 200px;
+    padding-top: 160px;
+    position: absolute;
+	top: 0;
+	left: 0;
+    user-select: none;
+}
+
+.counter_enemy {
+    padding-left: 600px;
+}
+
+.btn_player {
+    width: 145px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #305B83;
+
+    font-family: "Roboto";
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+}
+
+.btn_enemy {
+    background: #7A7D81;
+}
+
+/* ==================== Game over ==================== */
+
+.game_over {
+    width: 900px;
+    height: 550px;
+    border-radius: 10px;
+    background: #00000062;
+
+	position: relative;
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.win_loose_window {
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+    width: 300px;
+    height: 180px;
+    border-radius: 10px;
+}
+
+.win_loose_window h1 {
+    color: #FFF;
+    font-family: "Roboto_Condensed";
+    font-size: 40px;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.btn_ok {
+    width: 60px;
+    height: 34px;
+    flex-shrink: 0;
+    border-radius: 15px;
+    background: #ffffff;
+    color: black;
+    font-family: "Roboto_Condensed";
+}
+
+.game-over-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    border-radius: 10px;
+    z-index: 1000; /* Make sure it's on top of other elements */
+  }
+  
+  .game-over-modal button {
+    margin-top: 10px;
+    padding: 5px 20px;
+    border: none;
+    background: #007bff;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .game-over-modal button:not(:last-child) {
+    margin-right: 10px;
+  }

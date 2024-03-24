@@ -1,8 +1,8 @@
-import Home from "@/components/screens/Home/Home"
 import '../styles/globals.css'
+import Profile from "@/components/screens/Profile/Profile"
 
 export default function HomePage() {
-  return (
-	<Home />
-  )
+	return (
+		<Profile />
+	)
 }

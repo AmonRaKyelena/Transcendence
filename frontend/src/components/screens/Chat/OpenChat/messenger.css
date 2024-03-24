@@ -1,0 +1,153 @@
+/* MESSAGES */
+
+.windows_with_messages {
+    width: 100%;
+    height: 500px;
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.windows_with_messages ul {
+	flex-direction: column;
+    align-items: flex-start;
+	width: 100%;
+}
+
+.windows_with_messages li {
+	height: auto;
+	padding: 0;
+	margin-top: 10px;
+}
+
+.message {
+	background-color: #4e4e4e;
+	width: fit-content;
+	
+	padding: 7px;
+	padding-right: 15px;
+	padding-left: 15px;
+	border-radius: 10px;
+
+	/* text-align: right; */
+	max-width: 70%;
+
+	display: flex;
+	flex-direction: column;
+}
+
+.message span {
+	font-size: 1rem;
+	overflow-wrap: break-word;
+}
+
+.message .sender-name span {
+	color: rgb(152, 196, 202);
+	cursor: pointer;
+}
+
+/* MESSAGE SENDING */
+
+.new-message-panel {
+	width: 100%;
+	height: 34px;
+	background-color: #292929;
+	margin-top: 10px;
+	padding: 7px;
+	padding-right: 10px;
+	padding-left: 10px;
+
+	border-radius: 10px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+#message-input {
+	height: 20px;
+	width: 100px;
+	
+	border:none;
+	background-image:none;
+	background-color: #292929;
+	color: white;
+	padding: 0rem 1rem;
+	margin-right: 1rem;
+	border-radius: 1.125rem;
+	flex-grow: 2;
+}
+
+.send-button {
+    width: 40px;
+	height: 30px;
+    color: white;
+    display: flex;
+    align-items: center;
+	justify-content: center;
+    margin-top: -5px;
+}
+
+.join-chat-pannel {
+	width: 100%;
+	height: 50px;
+	background-color: #292929;
+	margin-top: 10px;
+	padding: 7px;
+	padding-right: 10px;
+	padding-left: 10px;
+
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+}
+
+.join-button {
+	background-color: rgb(33, 40, 40);
+	border-radius: 10px;
+	color: white;
+}
+
+.join-private {
+	height: 200px;
+	width: 300px;
+
+	position: absolute;
+	top: 150px;
+	left: 75px;
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	background-color: #666666;
+	border-radius: 10px;
+}
+
+#pass-input {
+	height: 20px;
+	width: 150px;
+	
+	border:none;
+	background-image:none;
+	background-color: #292929;
+	color: white;
+	padding: 0rem 1rem;
+	border-radius: 1.125rem;
+
+	margin-bottom: 20px;
+}
+
+.invalid-feedback {
+	margin-top: 10px;
+	font-family: "Roboto", sans-serif;
+	font-size: 15px;
+	color: rgb(239, 49, 49);
+}
+
+.success-feedback {
+	margin-top: 10px;
+	font-family: "Roboto", sans-serif;
+	font-size: 15px;
+	color: rgb(78, 204, 101);
+}

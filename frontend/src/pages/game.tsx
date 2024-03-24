@@ -1,11 +1,10 @@
-import Navbar from '@/components/Navbar'
-import '../styles/globals.css'
+import { FC } from 'react';
+import GameMenu from '@/components/screens/Game/GameMenu';
 
-export default function GamePage() {
-  return (
-	<div style={{height: '100vh'}}>
-		<Navbar />
-		<main>Here will be the game</main>
-	</div>
-  )
+const GamePage1: FC = () => {
+	return (
+		<GameMenu />
+	);
 }
+
+export default GamePage1

@@ -1,14 +1,13 @@
-import { Injectable, Logger } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { Cron, CronExpression } from '@nestjs/schedule';
 import { PrismaService } from 'src/prisma/prisma.servise';
-import { UserStatus, UsersService } from 'src/users/services/users.service';
+import { UserStatus } from 'src/users/services/users.service';
 
 @Injectable()
 export class CheckOnlineService {
 	constructor(private prisma: PrismaService,
-				private jwtService: JwtService,
-				private userService: UsersService) {}
+				private jwtService: JwtService) {}
 
 	@Cron(CronExpression.EVERY_30_SECONDS)
 	async handleCron() {

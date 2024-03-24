@@ -4,13 +4,22 @@
   margin: 0;
 }
 
+@font-face {
+	font-family: "Roboto";
+	src:
+	  local("Roboto"),
+      url("../fonts/Roboto/Roboto-Regular.ttf");
+}
+
 html,
 body {
   max-width: 100vw;
-  overflow-x: hidden;
   width: 100%;
   height: 100%;
   margin: 0;
+
+  background-color: #1f1f1f;
+  font-family: "Roboto";
 }
 
 a {
@@ -29,7 +38,30 @@ main {
 	justify-content: center;
 	color: white;
 	position: relative;
-	background-color: rgb(7, 13, 27);
+	background-color: #1f1f1f;
 	flex-grow: 1;
-	min-height: 1000px;
+	min-height: 900px;
+}
+
+.pageContainer {
+	height: 100vh;
+	width: 100vw;
+}
+
+.loading {
+	height: 550px;
+	width: 450px;
+
+	position: absolute;
+	top: 0;
+	z-index: 10;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center; 
+	align-content: center;
+	
+	background-color: #3F3F3F;
+	border-radius: 10px;	
 }

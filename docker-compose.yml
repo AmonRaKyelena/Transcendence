@@ -8,6 +8,7 @@ services:
             dockerfile: ./deployment/back/Dockerfile
         ports:
             - 9000:9000
+            - 8000:8000
         depends_on:
             - db
         restart: unless-stopped
@@ -15,8 +16,8 @@ services:
         networks:
             - front-network
             - back-network
-        volumes:
-            - ./backend:/app/BACK
+        env_file: .env
+
     frontend:
         container_name: front
         build:
@@ -30,19 +31,19 @@ services:
         stop_grace_period: 1s
         networks:
             - front-network
-        volumes:
-            - ./frontend:/app/FRONT
+        env_file: .env
     db:
         container_name: db
         restart: unless-stopped
         stop_grace_period: 1s
         image: postgres:12.10
+        environment:
+            - POSTGRES_DB=${POSTGRES_DB}
+            - POSTGRES_USER=${POSTGRES_USER}
+            - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
         volumes:
             - database:/var/lib/postgresql/data
-        environment:
-            - POSTGRES_DB=ft_transcendence
-            - POSTGRES_USER=admin
-            - POSTGRES_PASSWORD=admin
+        env_file: .env
         ports:
             - 5555:5432
         networks:

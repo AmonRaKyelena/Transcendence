@@ -1,7 +1,15 @@
 import { Module } from '@nestjs/common';
-import { GameController } from './game.controller';
+import { LobbyService } from './services/lobby.service';
+import { CommonModule } from '../common/common.module';
+import {GameGateway} from "./game.gateway";
+import { PrismaService } from 'src/prisma/prisma.servise';
+import { ChatModule } from 'src/chat/chat.module';
+import { HistoryService } from "../users/services/history.service";
 
 @Module({
-  controllers: [GameController]
+  providers: [LobbyService, GameGateway, PrismaService, HistoryService], // добавили сервис истории
+  imports: [CommonModule, ChatModule],
+  exports: [LobbyService]
 })
+
 export class GameModule {}

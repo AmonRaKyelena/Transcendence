@@ -1,8 +1,8 @@
-import Home from "@/components/screens/Home/Home"
+import Profile from "@/components/screens/Profile/Profile"
 
 
 export default function Custom404() {
 	return (
-		<Home />
+		<Profile />
 	)
   }

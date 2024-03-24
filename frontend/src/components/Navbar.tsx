@@ -4,53 +4,33 @@ import '../styles/globals.css'
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import axios from 'axios';
 import { useRouter } from 'next/router';
+import { useUserInfos } from '@/contexts/User/Component';
 
 const Navbar: FC = () => {
 	const [navbar, setNavbar] = useState(false);
-	const [username, setUsername] = useState('');
-	const router = useRouter();
-
-	useEffect(() => {
-		// Function to fetch the access token
-		const fetchUsername = async () => {
-			const url = '/api/user/username';
-			const response = await fetch(url, {
-				method: "GET",
-				headers: {
-					"content-type": "application/json",
-				},
-			}).catch((e) => console.log(e));
-			if (response?.ok)
-				setUsername((await response.json())['username']);
-		};
 	
-		// Call the fetchAccessToken function when the component mounts
-		fetchUsername();
-	  }, []);
+	const router = useRouter();
+	const userData = useUserInfos();
+
 
 	const goToProfilePage = () => {
-		if (username)
-			router.push('/profile');
+		if (userData)
+			router.push('/');
 	}
 
 	return (
-		<nav className='nav'>
+		<nav className='nav' style={{background: "#1F1F1F", fontFamily: "Roboto"}}>
 			<div className="nav_content">
 				<div>
 					<div className="nav_sections">
-						{/* LOGO */}
-						<Link href='/' className='logo'>
-							<Image
-								src="/pong_logo.svg"
-								width={50}
-								height={50}
-								alt='logo' />
-								<h2> Transcendence</h2>
-						</Link>
-
-						{/* BURGER BUTTON FOR MOBILE */}
+						<Image
+							src="/pong_logo.svg"
+							width={50}
+							height={50}
+							alt='logo' 
+							priority={true}
+						/>
 						<div className="burger">
 							<button onClick={() => {setNavbar(!navbar)}}>
 								{navbar ? (
@@ -75,31 +55,29 @@ const Navbar: FC = () => {
 				<div className={`tabs ${navbar ? 'tabs_open' : 'hidden_mini'}`}>
 					<ul>
 						<li>
-							<Link href='/profile' onClick={() => setNavbar(!navbar)}>
-								Profile
+							<Link href='/' onClick={() => setNavbar(!navbar)}>
+								HOME
 							</Link>
 						</li>
 						<li>
 							<Link href='/game' onClick={() => setNavbar(!navbar)}>
-								Game
+								GAME
 							</Link>
 						</li>
 						<li>
 							<Link href='/chat' onClick={() => setNavbar(!navbar)}>
-								Chat
+								CHAT
 							</Link>
 						</li>
 						<li>
-							<Link href='/about' onClick={() => setNavbar(!navbar)}>
-								About
+							<Link href='/friends' onClick={() => setNavbar(!navbar)}>
+								FRIENDS
 							</Link>
 						</li>
 					</ul>
 				</div>
-
-				{/* USERNAME */}
 				<div className="username" onClick={goToProfilePage}>
-					<h2>{username}</h2>
+					<span>{userData.userName.userName}</span>
 				</div>
 			</div>
 		</nav>
